@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=Noto+Sans&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #076dd9;
+  --background-hover-color: #e6f2ff;
+  --inactive-color: #8e8e8e;
+  --primary-font: "Barlow", sans-serif, Arial;
+}
+
+html{
+  min-height: 100%;
+  position: relative;
+}
+*{
+  font-family: var(--primary-font);
+}
+
+.body {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 280px;
+  margin-top: 115px;
+}
+
+.body main {
+  padding: 2% 10%;
+}

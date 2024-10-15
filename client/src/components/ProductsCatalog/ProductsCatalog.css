@@ -1,0 +1,33 @@
+.container{
+    height:auto;
+  }
+
+.body .main-products{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-auto-flow: dense;
+  gap: 30px;
+}
+
+.error-message{
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.error-message img{
+  animation: shake 0.9s ease-in-out infinite;
+}
+
+@media (max-width:768px) {
+  .body .main-products{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+  }
+}

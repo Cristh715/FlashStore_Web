@@ -1,0 +1,60 @@
+.tag{
+    color: var(--secondary-color);
+    font-size: 14px;
+    display: block;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    width: fit-content;
+    border-radius: 25px;
+    background-color: #e1f0f8;
+    border: 1px var(--secondary-color) solid;
+}
+
+.important-text{
+    background-color: #cdf9e4;
+    color: #0acb71;
+    border: 1px #0acb71 solid;
+}
+
+.warning-text{
+    background-color: #fff6e5;
+    color: #ffa503;
+    border: 1px #ffa503 solid;
+}
+
+.Samsung{
+    background-color: #d2d7fd;
+    color: #0c23a1;
+    border: 1px #0c23a1 solid;
+    
+}
+
+.Xiaomi{
+    background-color: #ffede0;
+    color: #ff6900;
+    border: 1px #ff6900 solid;
+}
+
+.Apple{
+    background-color: #e8e8e8;
+    color: #393939;
+    border: 1px #393939 solid;
+}
+
+.Huawei{
+    background-color: rgb(255, 215, 215);
+    color: #ee312d;
+    border: 1px #ee312d solid;
+}
+
+.Oppo{
+    background-color: #ccf9e9;
+    color: #00925f;
+    border: 1px #00925f solid;
+}
+
+.Motorola{
+    background-color: #ddeaf9;
+    color: #4279bd;
+    border: 1px #4279bd solid;
+}

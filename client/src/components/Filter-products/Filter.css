@@ -1,0 +1,169 @@
+.filter {
+    padding-top: 40px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-title {
+    font-size: 2em;
+    font-weight: 500;
+    color: #393939;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    font-size: 0.55em;
+}
+
+.selected-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.selected-filter {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: #e5f2ff;
+    color: #007bff;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.selected-filter .remove-icon {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.dropdown-content {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion-header {
+    width: 100%;
+    background: #007bffeb;
+    color: #fff;
+    border: none;
+    text-align: left;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 7px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.accordion-header:hover {
+    background: #0056b3;
+}
+
+.accordion-icon {
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+.accordion-icon.expanded {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.accordion-content.show {
+    max-height: 400px;
+    margin: 10px 0;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.filter-option:hover {
+    background: #e9ecef;
+}
+
+.filter-option.selected {
+    background: #007bff;
+    color: #fff;
+}
+
+.filter-option.selected .filter-label {
+    font-weight: bold;
+}
+
+.filter-option input {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.filter-option .filter-label {
+    flex: 1;
+    padding: 12px 0;
+    cursor: pointer;
+}
+
+.filter-option input[type="checkbox"] {
+    width: 1.2em;
+    height: 1.2em;
+    cursor: pointer;
+}
+
+.filter-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.021);
+    transition: all 0.3s;
+}
+
+.filter-icon svg {
+    height: 16px;
+    fill: var(--primary-color);
+    transition: all 0.3s;
+}
+
+.filter-icon:hover {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.11);
+    background-color: var(--primary-color);
+}
+
+.filter-icon:hover svg {
+    fill: white;
+}

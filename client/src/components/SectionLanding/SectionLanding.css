@@ -1,0 +1,82 @@
+
+  
+  .section header {
+    display: flex;
+    color: #666666;
+    justify-content: space-between;
+  }
+
+  .section header h2{
+    font-weight: 600;
+    color: #666666;
+  }
+  
+  .important {
+    font-weight: 800;
+    color: var(--primary-color);
+  }
+  
+  .line {
+    background-color: var(--primary-color);
+    width: 180px;
+    height: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .view-more {
+    position: relative;
+    margin: auto 0;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .view-more:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #95d8ecbb;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+  }
+  
+  .view-more span {
+    position: relative;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--secondary-color);
+  }
+  
+  .view-more svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #2566a8;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+  }
+  
+  .view-more:hover:before {
+    width: 100%;
+    background: #b1dae7;
+  }
+  
+  .view-more:hover svg {
+    transform: translateX(0);
+  }
+  
+  .view-more:active {
+    transform: scale(0.95);
+  }
+  

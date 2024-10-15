@@ -1,0 +1,229 @@
+
+.bg-login {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('img/background.avif') no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+}
+.wrapper {
+    position: relative;
+    width: 420px;
+    height: 460px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 20px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, .4);
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: height .2s ease;
+}
+
+.wrapper.activeLogin {
+    height: 600px;
+}
+
+.wrapper .form-box {
+  margin: auto;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+}
+
+.wrapper .form-box.login {
+    background-color: #fff;
+    transition: translate .18s ease;
+    translate: 0;
+}
+
+.wrapper.activeLogin .form-box.login {
+    transition: none;
+    translate: -420px;
+}
+
+.wrapper .form-box.register {
+    background-color: #fff;
+    box-sizing: border-box;
+    position: absolute;
+    transition: none;
+    translate: 420px;
+}
+
+.wrapper.activeLogin .form-box.register {
+    transition: translate .18s ease;
+    translate: 0;
+}
+
+form h1 {
+    color: #353535;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 28px;
+    text-align: center;
+}
+
+form .input-box {
+    position: relative;
+    margin: 6px 0;
+}
+
+.input-box input {
+    width: 80%;
+    height: 30%;
+    background: rgba(0, 170, 255, 0.05);
+    border: none;
+    outline: none;
+    border: 2px solid rgb(0, 170, 255);
+    border-radius: 20px;
+    font-size: 16px;
+    color: var(--primary-color);
+    padding: 15px 45px 15px 20px;
+}
+
+.input-box input::placeholder {
+    color: rgba(0, 170, 255, 0.7);
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 20px;
+    top: 38%;
+    font-size: 16px;
+}
+
+form .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.remember-forgot label input {
+    accent-color: #00aaff;
+    margin-right: 4px;
+}
+
+.remember-forgot a {
+    color: #00aaff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+form button{
+    width: 100%;
+    height: 45px;
+    background: #0ba6ff79;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #0057d2;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+form button:hover{
+    color:#fff;
+    box-shadow: 5px 5px 10px hsl(200, 100%, 85%);
+    background-color: #00aaff;
+}
+
+form .register-link {
+    font-size: 14.5px;
+    text-align: center;
+}
+
+.register-link p a {
+    color: #00aaff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+.bg-login{
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonVolver {
+    margin-top: 20px;
+    width: 190px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+    padding: 0px 25px;
+    background-color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    transition-duration: .2s;
+  }
+  
+  .arrow {
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .buttonVolver:hover {
+    background-color: #009be8;
+    transition-duration: .2s;
+  }
+  
+  .buttonVolver:hover .arrow {
+    animation: slide-right .6s ease-out both;
+  }
+
+  @keyframes slide-right {
+    0% {
+      transform: translateX(-10px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .button:active {
+    transform: translate(1px , 1px);
+    transition-duration: .2s;
+  }
+  
+  .formLoginRegister{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .imgLogoLogin{
+    margin: 0 auto;
+  }
+
+  .imgLogoLogin img{
+    width: 90px;
+    opacity: 0.5;
+  }
