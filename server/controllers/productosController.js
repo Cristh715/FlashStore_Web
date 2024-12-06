@@ -5,7 +5,7 @@ function handleObtenerProductos(req, res) {
         if (err) {
             res.status(500).send({ error: err.message });
         } else {
-            res.send(results);
+            res.status(200).send(results);
         }
     });
 }
@@ -16,7 +16,7 @@ function handleObtenerProductoEspecifico(req, res) {
         if (err) {
             res.status(500).send({ error: err.message });
         } else {
-            res.send(results);
+            res.status(200).send(results);
         }
     });
 }
@@ -28,7 +28,7 @@ function handleUpdateImgProduct(req, res) {
         if (err) {
             res.status(500).send({ error: err.message });
         } else {
-            res.send(results);
+            res.status(200).send(results);
         }
     });
 }

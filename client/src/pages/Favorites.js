@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useFavorites } from '../contexts/FavoritesContext';
 import ProductsCatalog from '../components/ProductsCatalog/ProductsCatalog';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
 import LoaderPage from '../components/LoaderPage/LoaderPage';
 
 const FavoritesPage = () => {

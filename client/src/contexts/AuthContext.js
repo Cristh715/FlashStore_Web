@@ -1,3 +1,4 @@
+// AuthContext.jsx
 import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -30,11 +31,11 @@ const AuthProvider = ({ children }) => {
                 setLoading(false);
             }
         };
-
         checkSession();
     }, []);
 
     const login = async (email, password) => {
+        setError('');
         try {
             const response = await axios.post('/api/auth/login', { email, password }, { withCredentials: true });
             if (response.data.loggedIn) {
@@ -42,11 +43,28 @@ const AuthProvider = ({ children }) => {
                 setUserName(response.data.userName);
                 setUsuarioId(response.data.usuario_id);
                 Cookies.set('usuario_id', response.data.usuario_id);
+                return true;
             }
         } catch (error) {
             setError('Error de autenticación. Por favor, intente de nuevo.');
             console.error('Error de autenticación:', error);
         }
+        return false;
+    };
+
+    const register = async (registerData) => {
+        setError('');
+        try {
+            const response = await axios.post('/api/auth/registro', registerData);
+            if (response.data.error) {
+                setError(response.data.error);
+            } else {
+                return true;
+            }
+        } catch (error) {
+            setError('Error en el registro. Por favor, intente de nuevo.');
+        }
+        return false;
     };
 
     const logout = async () => {
@@ -54,17 +72,16 @@ const AuthProvider = ({ children }) => {
             await axios.post('/api/auth/logout', {}, { withCredentials: true });
             setIsLoggedIn(false);
             setUserName('');
-            setUsuarioId(''); // Limpiar usuario_id
+            setUsuarioId('');
             Cookies.remove('usuario_id');
             navigate('/login');
         } catch (error) {
             setError('Error al cerrar sesión. Por favor, intente de nuevo.');
-            console.error('Error al cerrar sesión:', error);
         }
     };
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, userName, usuario_id, login, logout, error, loading }}>
+        <AuthContext.Provider value={{ isLoggedIn, userName, usuario_id, login, register, logout, error, loading }}>
             {children}
         </AuthContext.Provider>
     );

@@ -6,7 +6,7 @@ const Catalogo = () => {
     
     {
         name: 'COMPUPALACE - MIRAFLORES',
-        address: 'v. Petit Thouars N°. 5358 Tienda 1013 Miraflores.',
+        address: 'Av. Petit Thouars N°. 5358 Tienda 1013 Miraflores.',
         phone: '(01) 510 1903',
         mobile: '946 317 588',
         email: 'pamelastagnaro@infotec.com.pe',
@@ -39,8 +39,7 @@ const Catalogo = () => {
         email: 'pamelastagnaro@infotec.com.pe',
         imageUrl: 'https://www.infotec.com.pe/img/cms/Tiendas/tda-1013.jpg',
         hours: 'Lunes a Sábados 9:00 am a 7:00 pm'
-      },
-    // Agrega más tiendas aquí
+      }
   ];
 
   return (

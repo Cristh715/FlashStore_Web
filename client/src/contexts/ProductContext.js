@@ -22,11 +22,10 @@ export const ProductProvider = ({ children }) => {
       } catch (error) {
         setError('No se han encontrado productos. Por favor, intente más tarde.');
         console.error('Error fetching products:', error);
-      } 
+      }
     };
 
     fetchProducts();
-    
   }, []);
 
   useEffect(() => {
@@ -38,7 +37,16 @@ export const ProductProvider = ({ children }) => {
 
     Object.entries(activeFilters).forEach(([key, values]) => {
       if (values.length > 0) {
-        filtered = filtered.filter(product => values.includes(product[key]));
+        if (key === 'precio') {
+          filtered = filtered.filter(product => values.some(range => {
+            let [min, max] = range.split(' - ');
+            min = parseFloat(min.split('S/ ')[1]);
+            max = parseFloat(max.split('S/ ')[1]);
+            return product.precio >= min && (!max || product.precio <= max);
+          }));
+        } else {
+          filtered = filtered.filter(product => values.includes(product[key]));
+        }
       }
     });
 
@@ -62,7 +70,6 @@ export const ProductProvider = ({ children }) => {
     try {
       const response = await axios.get(`/api/productos/producto/${productId}`);
       setSelectedProduct(response.data[0]);
-      console.log(response.data)
     } catch (error) {
       console.error('Error fetching product:', error);
       throw error;
@@ -76,25 +83,25 @@ export const ProductProvider = ({ children }) => {
   const decrementQuantity = useCallback(() => {
     setQuantity(prevQuantity => Math.max(prevQuantity - 1, 1));
   }, []);
-  
+
   const updateQuantity = useCallback(() => {
     setQuantity(1);
   }, []);
 
   return (
     <ProductContext.Provider value={{
-      products, 
-      filteredProducts, 
-      activeFilters, 
-      handleFilterChange, 
-      updateCategory, 
-      resetFiltersAndCategory, 
-      getProduct, 
-      loading, 
-      error, 
-      selectedProduct, 
-      quantity, 
-      incrementQuantity, 
+      products,
+      filteredProducts,
+      activeFilters,
+      handleFilterChange,
+      updateCategory,
+      resetFiltersAndCategory,
+      getProduct,
+      loading,
+      error,
+      selectedProduct,
+      quantity,
+      incrementQuantity,
       decrementQuantity,
       updateQuantity
     }}>

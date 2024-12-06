@@ -7,7 +7,7 @@ const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
   const { usuario_id, isLoggedIn } = useContext(AuthContext);
-  const { products, filteredProducts } = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   const [favorites, setFavorites] = useState([]);
   const [favoriteProducts, setFavoriteProducts] = useState();
 

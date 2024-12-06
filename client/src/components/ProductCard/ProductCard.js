@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { useFavorites } from '../../contexts/FavoritesContext';
 import { FaCircleCheck } from "react-icons/fa6";
 import { FaExclamationCircle } from "react-icons/fa";
+import CheckBox from '../Common/CheckBox';
 
 const ProductCard = ({ product, onClick }) => {
   const { usuario_id, isLoggedIn } = useContext(AuthContext);
@@ -38,7 +39,7 @@ const ProductCard = ({ product, onClick }) => {
       }
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 3000);
-      
+
       setIsFavorite(false);
     } catch (error) {
       console.error('Error al actualizar favoritos:', error);
@@ -48,8 +49,11 @@ const ProductCard = ({ product, onClick }) => {
   return (
     <>
       <article className="product">
-        <div className="product-image" onClick={onClick}>
-          <img src={imagen} alt={nombre} />
+        <section className='check-compare'>
+          <CheckBox text={'Comparar'} />
+        </section>
+        <div className="product-image">
+          <img src={imagen} alt={nombre} onClick={onClick} />
         </div>
         <div className="product-content">
           <div className='container-tags'>

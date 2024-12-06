@@ -1,8 +1,9 @@
 .brands-container {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, 150px);
+	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	gap: 60px;
+
 }
 
 .brand {
@@ -37,15 +38,4 @@
 
 .brand-logo:active {
 	transform: scale(0.9);
-}
-
-.offers-images{
-	display: flex;
-	gap: 15px;
-	width: fit-content;
-	margin-bottom: 20px;
-}
-
-.offers-images img{
-	width: 33%;
 }

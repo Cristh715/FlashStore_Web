@@ -1,0 +1,55 @@
+.container-check-input input {
+    display: none;
+}
+
+.container-check-input {
+    display: flex;
+    gap: 5px;
+    position: relative;
+    cursor: pointer;
+    font-size: 17px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.checkmark-compare {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    background-color: #2196f300;
+    border-radius: 0.25em;
+    transition: all 0.25s;
+}
+
+.container-check-input input:checked~.checkmark-compare {
+    background-color: var(--secondary-color);
+}
+
+.checkmark-compare:after {
+    content: "";
+    position: absolute;
+    transform: rotate(0deg);
+    border: 0.1em solid black;
+    left: 0;
+    top: 0;
+    width: 1.05em;
+    height: 1.05em;
+    border-radius: 0.25em;
+    transition:
+        all 0.25s,
+        border-width 0.1s;
+    border-color: #9c9c9c;
+}
+
+.container-check-input input:checked~.checkmark-compare:after {
+    left: 0.45em;
+    top: 0.25em;
+    width: 0.25em;
+    height: 0.5em;
+    border-color: #fff0 white white #fff0;
+    border-width: 0 0.15em 0.15em 0;
+    border-radius: 0em;
+    transform: rotate(45deg);
+}

@@ -1,25 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FaAngleDown } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
+import { ProductContext } from '../../contexts/ProductContext';
 import './Filter.css';
 
 const Filter = ({ onFilterChange }) => {
+  const { category, handleFilterChange } = useContext(ProductContext);
   const [filters, setFilters] = useState({
     marca: [],
     precio: [],
     tamano: [],
     ram: [],
-    os: [],
+    sistema_operativo: [],
     generacion: []
   });
-
   const [expanded, setExpanded] = useState(null);
 
-  useEffect(() => {
-    onFilterChange(filters);
-  }, [filters]);
+  const filterOptionsByCategory = {
+    default: [
+      { id: 'marca', label: 'Marca', values: ['Apple', 'Samsung', 'Huawei', 'Xiaomi', 'Motorola'] },
+      { id: 'precio', label: 'Precio', values: ['S/ 0 - S/ 300', 'S/ 300 - S/ 600', 'S/ 600 - S/ 1000', 'S/ 1000 - S/ 2000', 'S/ 2000 - S/ 3000'] },
+      { id: 'tamano', label: 'Tamaño de pantalla', values: ['5.0"', '5.0" - 6.0"', '6.0"'] },
+      { id: 'ram', label: 'Memoria Ram', values: ['4GB', '4GB - 8GB', '8GB'] },
+      { id: 'sistema_operativo', label: 'Sistema Operativo', values: ['Android', 'iOS'] }
+    ],
+    2: [ 
+      { id: 'marca', label: 'Marca', values: ['Garmin', 'Samsung', 'Apple'] },
+      { id: 'precio', label: 'Precio', values: ['S/ 0 - S/ 300', 'S/ 300 - S/ 600', 'S/ 600 - S/ 1000', 'Mayor a S/ 1000'] }
+    ],
+    3: [
+      { id: 'marca', label: 'Marca', values: ['Amazon', 'Samsung', 'Apple'] },
+      { id: 'precio', label: 'Precio', values: ['S/ 0 - S/ 300', 'S/ 300 - S/ 600', 'S/ 600 - S/ 1000', 'Mayor a S/ 1000'] }
+    ]
+  };
 
-  const handleFilterChange = (filterType, value) => {
+  const filterOptions = category ? filterOptionsByCategory[category] || filterOptionsByCategory.default : filterOptionsByCategory.default;
+
+  useEffect(() => {
+    handleFilterChange(filters);
+  }, [filters, handleFilterChange]);
+
+  const handleFilterChangeLocal = (filterType, value) => {
     setFilters((prevFilters) => {
       const currentFilters = prevFilters[filterType];
       if (currentFilters.includes(value)) {
@@ -47,19 +68,11 @@ const Filter = ({ onFilterChange }) => {
     }));
   };
 
-  const filterOptions = [
-    { id: 'marca', label: 'Marca', values: ['Apple', 'Samsung', 'Huawei', 'Xiaomi', 'Motorola'] },
-    { id: 'precio', label: 'Precio', values: ['S/ 0 - S/ 300', 'S/ 300 - S/ 600', 'S/ 600 - S/ 1000', 'Mayor a S/ 1000'] },
-    { id: 'tamano', label: 'Tamaño de pantalla', values: ['5.0"', '5.0" - 6.0"', '6.0"'] },
-    { id: 'ram', label: 'Memoria Ram', values: ['4GB', '4GB - 8GB', '8GB'] },
-    { id: 'os', label: 'Sistema Operativo', values: ['Android', 'iOS', 'Fire Os'] },
-    { id: 'generacion', label: 'Generación', values: ['1ra', '2da', '3ra', '4ta', '5ta'] }
-  ];
-
   return (
     <aside className="filter">
       <div className="dropdown">
-        <div className="dropdown-title">Filtros<span className="filter-count">{Object.values(filters).flat().length}</span>
+        <div className="dropdown-title">
+          Filtros<span className="filter-count">{Object.values(filters).flat().length}</span>
         </div>
         <div className="selected-filters">
           {Object.entries(filters).flatMap(([filterType, values]) =>
@@ -86,16 +99,13 @@ const Filter = ({ onFilterChange }) => {
               </button>
               <div className={`accordion-content ${expanded === option.id ? 'show' : ''}`}>
                 {option.values.map(value => (
-                  <div
-                    key={value}
-                    className="filter-option"
-                  >
+                  <div key={value} className="filter-option">
                     <input
                       type="checkbox"
                       id={`${option.id}-${value}`}
                       checked={filters[option.id].includes(value)}
                       onClick={(e) => e.stopPropagation()}
-                      onChange={() => handleFilterChange(option.id, value)}
+                      onChange={() => handleFilterChangeLocal(option.id, value)}
                     />
                     <label htmlFor={`${option.id}-${value}`} className="filter-label">
                       {value}

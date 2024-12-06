@@ -8,16 +8,17 @@
 .store {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     background-color: white;
     border: 1px solid #ddd;
-    margin-bottom: 20px;
-    width: 100%; /* Ajusta el ancho total */
+    width: 100%;
+    margin: 10px 0;
 }
 
 .store-photo {
-    width: 35%; /* Ajusta según necesidad */
+    width: -webkit-fill-available;
+    max-width: 450px;
     height: auto;
-    margin-right: 20px;
     border-radius: 20px;
 }
 
@@ -26,18 +27,13 @@
     flex-grow: 1;
 }
 
-.store-info {
-    width: 45%; /* Ajusta según necesidad */
-}
-
 .store-hours {
-    width: 20%; /* Ajusta según necesidad */
     background-color: #f9f9f9;
     border-left: 1px solid #ddd;
 }
 
 .store-info h3 {
-    color: #05ABF3; /* Color naranja de la marca */
+    color: #05ABF3;
     margin: 0 0 10px;
 }
 

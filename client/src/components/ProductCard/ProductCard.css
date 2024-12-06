@@ -90,6 +90,7 @@
     border-radius: 8px;
     cursor: pointer;
     transition: 400ms;
+    text-decoration: none;
   }
   
   .buy-btn span{
@@ -231,4 +232,11 @@
       opacity: 0;
       transform: translateY(20px);
     }
+  }
+
+  .check-compare{
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 21px;
+    padding-top: 5px;
   }

@@ -1,0 +1,82 @@
+pipeline {
+    agent any
+    environment {
+        SCANNER_HOME = tool 'sonar-scanner'
+        JMETERT_HOME = 'C:\\Users\\USUARIO\\Documents\\apache-jmeter-5.6.3'
+        JMX_FILE = 'performance-test.jmx'
+        RESULTS_DIR = 'jmeter-results'
+        TARGET_URL = "http://localhost:3000"
+    }
+    stages {
+        stage("Git Checkout") {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Cristh715/web_flashstore_ux.git'
+            }
+        }
+        stage('Build') {
+            parallel {
+                stage('Frontend Build') {
+                    steps {
+                        dir('client') {
+                            bat 'npm install'
+                            bat "npm run build"
+                        }
+                    }
+                }
+                stage('Backend Build') {
+                    steps {
+                        dir('server') {
+                            bat 'npm install'
+                        }
+                    }
+                }
+            }
+        }
+        stage("SonarQube Analysis ") {
+            steps {
+                bat "$SCANNER_HOME/bin/sonar-scanner -Dsonar.url=http://localhost:9000/ \
+                -Dsonar.login=squ_dc05b826811c411a05463df9b6b96cf20e2c83e4 \
+                -Dsonar.projectKey=FlashStore_verificacion \
+                -Dsonar.projectName=FlashStore_verificacion \
+                -Dsonar.sources=client,server"
+            }
+        }
+        stage("Run Unit Tests") {
+            steps {
+                script {
+                    dir('server') {
+                        bat 'npm test'
+                    }
+                }
+            }
+        }
+        stage("Run Functional Tests") {
+            steps {
+                script {
+                    dir('client') {
+                        bat 'npm test'
+                    }
+                }
+            }
+        }
+        stage('Run performance tests') {
+            steps {
+                script {
+                    def timestamp = new Date().format("yyyyMMdd_HHmmss")
+                    def resultsFile = "${WORKSPACE}\\${RESULTS_DIR}\\results_${timestamp}.jtl"
+                    def reportDir = "${WORKSPACE}\\${RESULTS_DIR}\\report_${timestamp}"
+
+                    bat """
+                         ${JMETERT_HOME}\\bin\\jmeter -n -t ${WORKSPACE}\\${JMX_FILE} -l ${resultsFile} -e -o ${reportDir}
+                    """
+                    publishHTML(target: [
+                        reportName: 'JMeter Report',
+                        reportDir: reportDir,
+                        reportFiles: 'index.html',
+                        keepAll: true
+                    ])
+                }
+            }
+        }
+    }// End of stages
+}//End of pipeline

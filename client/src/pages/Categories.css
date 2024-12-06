@@ -1,0 +1,15 @@
+.categories{
+    display: flex;
+    padding: 2% 5%;
+    flex-wrap: wrap;
+    gap: 1.2em;
+    justify-content: center;
+}
+
+.categories-title{
+    color: var(--primary-color);
+    text-align: center;
+    padding-top: 25px;
+    font-weight: 600;
+    margin: 0;
+}

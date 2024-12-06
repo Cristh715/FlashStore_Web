@@ -19,12 +19,11 @@ const Footer = () => {
                     <li>Sobre nosotros</li>
                     <li>Nuestras tiendas</li>
                     <li>Términos y condiciones</li>
-                    <li>FAQ</li>
                 </ul>
             </div>
         </div>
         <div className="footer-bottom">
-            <p>&copy; 2024 Todos los derechos reservados. Grupo8</p>
+            <p>&copy; 2024 Todos los derechos reservados.</p>
         </div>
     </footer>
     );

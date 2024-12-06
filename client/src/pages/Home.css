@@ -1,0 +1,21 @@
+.carousel-container{
+	padding: 35px 10px;
+	padding-top: 10px;
+}
+
+.react-multiple-carousel__arrow {
+	z-index: 1;
+}
+
+.offers-images{
+	display: flex;
+	gap: 15px;
+	width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.offers-images img{
+	max-width: 390px;
+	width: -webkit-fill-available;
+}

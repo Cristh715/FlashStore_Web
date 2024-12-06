@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useCartContext } from '../../contexts/CartContext';
-import { CirclesThreePlus, Meteor, User, CalendarHeart, ClockCounterClockwise, GearSix, SignOut, ShoppingCartSimple } from "@phosphor-icons/react";
+import { CirclesThreePlus, Meteor, User, CalendarHeart, ClockCounterClockwise, GearSix, SignOut, ShoppingCartSimple, List } from "@phosphor-icons/react";
 import { Link, NavLink } from 'react-router-dom';
+import Cart from '../Cart/Cart';
 import './Header.css';
 
 const Header = () => {
@@ -10,6 +11,7 @@ const Header = () => {
     const { products } = useCartContext();
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const [isCartOpen, setCartOpen] = useState(false);
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -27,6 +29,12 @@ const Header = () => {
 
     const toggleDropdown = () => setDropdownOpen(prev => !prev);
     const toggleCart = () => setCartOpen(prev => !prev);
+    const toggleMobileMenu = () => setMobileMenuOpen(prev => !prev);
+    const handleLogout = () => {
+        logout();
+        setDropdownOpen(false); 
+        setCartOpen(false);
+    };
 
     const totalItems = products.reduce((acc, product) => acc + product.cantidad, 0);
 
@@ -54,7 +62,10 @@ const Header = () => {
                             <img src='/FlashStore_banner.webp' alt="Logo" />
                         </Link>
                     </h1>
-                    <section className='tools-bar'>
+                    <button className="mobile-menu-button" onClick={toggleMobileMenu}>
+                        <List size={28} color='#007bff' />
+                    </button>
+                    <section className={`tools-bar mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
                         <nav>
                             <li>
                                 <NavLink to="/catalogo" >
@@ -62,7 +73,7 @@ const Header = () => {
                                     Explorar
                                 </NavLink>
                             </li>
-                            <li><NavLink to="/catalogo" >
+                            <li><NavLink to="/categorias" >
                                 <CirclesThreePlus size={20} color='#007bff' weight='bold' />
                                 Categorías
                             </NavLink></li>
@@ -85,16 +96,16 @@ const Header = () => {
                                     </button>
                                     {isDropdownOpen && (
                                         <div className="actions">
-                                            <Link to="/favorites" className="action-item">
+                                            <Link to="/favoritos" className="action-item">
                                                 <CalendarHeart size={20} /> Favoritos
                                             </Link>
-                                            <Link to="/history" className="action-item">
+                                            <Link to="/historial" className="action-item">
                                                 <ClockCounterClockwise size={20} />Historial de compras
                                             </Link>
                                             <Link to="/settings" className="action-item">
                                                 <GearSix size={20} /> Configuración
                                             </Link>
-                                            <button className="action-item close-logout" onClick={logout}>
+                                            <button className="action-item close-logout" onClick={handleLogout}>
                                                 <SignOut size={20} /> Cerrar Sesión
                                             </button>
                                         </div>
@@ -112,7 +123,7 @@ const Header = () => {
                             </button>
                             {isCartOpen && (
                                 <div className="cart-dropdown">
-                                   
+                                    <Cart />
                                 </div>
                             )}
                         </div>
