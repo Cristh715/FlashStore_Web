@@ -1,8 +1,14 @@
 # README - Web flash Store
+### Integrantes :
+    -ANAYA SANCHEZ, Eros
+    -AZNARAN CABRERA, Gerson
+    -ATUNCAR YATACO, Cristhian Paolo
+    -CALIXTO GOÑE, Fabrizio Alonso
+    -LOPEZ SALINAS, Marco Antonio
+    -MARCHENA TEJADA, Chesney Taichi
 ## Propósito del proyecto
 El propósito de proyecto, es realizar un ecommerce para una tienda de smartphones, tablets, accesorios, etc.
 Este proyecto está construido con React para el frontend y Node.js con Express para el backend. Utiliza MySQL como base de datos para gestionar la información de los productos, usuarios y pedidos.
-
 ## Objetivo
 Crear una plataforma funcional para la compra y venta de productos, asegurando la calidad mediante la integración de herramientas de construcción automática, análisis estático, pruebas unitarias, funcionales y de seguridad.
 
